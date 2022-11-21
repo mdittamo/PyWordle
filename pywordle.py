@@ -71,8 +71,3 @@ while correct_guess == False:
         print('\n' + str(results))
         print(f'\nYou have {player1.score} guesses left.')
         results = ['_', '_','_','_','_']
-        
-        
-    
-    
-    
