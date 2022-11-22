@@ -51,8 +51,9 @@ while correct_guess == False:
         print(Fore.GREEN + '\nYou win!\nYou win!\nYou win!' + Style.RESET_ALL)
         break
     
-    elif player1.score <=0: 
-        print(Fore.RED + '\nYou lose!\nYou lose!\nYou lose!' + Style.RESET_ALL)
+    elif player1.score <=1: 
+        go_word = ''.join(word)
+        print(Fore.RED + f'\nYou lose!\nThe word was {go_word}!\nYou lose!' + Style.RESET_ALL)
         break
         
     else: 
