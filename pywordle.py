@@ -4,6 +4,8 @@ from colorama import Fore, Back, Style
 from colorama import init
 init()
 
+alphabet = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0, 'K':0, 'L':0, 'M':0, 'N':0, 'O':0, 'P':0, 'Q':0, 'R':0, 'S':0, 'T':0, 'U':0, 'V':0, 'W':0, 'X':0, 'Y':0, 'Z':0}
+
 #Obtain word from user(1)
 def getword():
     word = ''
@@ -51,13 +53,21 @@ while gameon == True:
     #Word from Word list
     word = random.choice(open('words.txt').readlines())
     word = word.upper()
-    word = list(word)
+    word = word[0:5]
+    #Update alpha dictionary
+    for x in range(len(word)): 
+        alphabet[word[x]]+=1
+    print(word)
+    l_word = list(word)
+    
+
+    print(alphabet)
 
     #Gameplay
     while correct_guess == False: 
         guess = getguess()
         
-        if guess == word: 
+        if guess == l_word: 
             print(Fore.GREEN + '\nYou win!\nYou win!\nYou win!\n' + Style.RESET_ALL)
             choice = input('Would you like to play again (Y)? ')
             choice = choice.upper()
@@ -68,8 +78,8 @@ while gameon == True:
                 break
         
         elif player1.score <=1: 
-            go_word = ''.join(word)
-            print(Fore.RED + f'\nYou lose!\nThe word was {go_word}You lose!\n' + Style.RESET_ALL)
+            go_word = ''.join(l_word)
+            print(Fore.RED + f'\nYou lose!\nThe word was {go_word}\nYou lose!\n' + Style.RESET_ALL)
             choice = input('Would you like to play again (Y)? ')
             choice = choice.upper()
             if choice == 'Y':
@@ -82,19 +92,23 @@ while gameon == True:
         else: 
             player1.score-=1
             
-            #Check for O's - Correct letter wrong place
-            for x in range (len(guess)): 
-                for y in range(len(word)):
-                    if guess[x] == word[y]:
-                        results[x] = 'O'
-            
             #Check for X's - Correct letter correct place
             for x in range (len(guess)): 
-                if guess[x] == word[x]:
+                if guess[x] == l_word[x] and alphabet[guess[x]] > 0:
                     results[x] = 'X'
+                    alphabet[guess[x]]-=1
             
+            #Check for O's - Correct letter wrong place
+            for x in range (len(guess)): 
+                for y in range(len(l_word)):
+                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O':
+                        results[x] = 'O'
+                        alphabet[guess[x]]-=1
+                        
             print('\n' + str(results))
             print(f'\nYou have {player1.score} guesses left.')
             results = ['_', '_','_','_','_']
-
-#Game Bug - fails when there is a single letter in the right spot and in the wrong spot (i.e. title would show O_XX__ for the word ditch)
+            
+            alphabet = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0, 'K':0, 'L':0, 'M':0, 'N':0, 'O':0, 'P':0, 'Q':0, 'R':0, 'S':0, 'T':0, 'U':0, 'V':0, 'W':0, 'X':0, 'Y':0, 'Z':0}
+            for x in range(len(word)): 
+                alphabet[word[x]]+=1
