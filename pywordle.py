@@ -46,7 +46,7 @@ while gameon == True:
     results = ['_', '_','_','_','_']
 
     #Title Screen
-    print(f'Guess the word in {player1.score} tries.')
+    print(f'\nGuess the word in {player1.score} tries.')
     
     #Player supplied word
     #word = getword()
