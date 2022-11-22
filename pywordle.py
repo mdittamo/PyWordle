@@ -93,22 +93,23 @@ while gameon == True:
         else: 
             player1.score-=1
             
-            #BUG - something like kales will only produe _ _ O O X for fells when it should be _ _ X X X.  The second O should be an X, but the O is overwriting because I only used one l in the first for statement.  Need to check against remaining letters, not 0. 
+            #BUG - something like kales will only produe _ _ O O X for fells when it should be _ _ X O X.  
             
             #Check for X's - Correct letter correct place
+            
+            #Check for O's - Correct letter wrong place
+            
             for x in range (len(guess)): 
-                if guess[x] == l_word[x] and alphabet[guess[x]] > 0:
+                if guess[x] == l_word[x]:
                     results[x] = 'X'
                     alphabet[guess[x]]-=1
             
-            
-            #Check for O's - Correct letter wrong place
             for x in range (len(guess)): 
                 for y in range(len(l_word)):
-                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O':
+                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O' and results[x] != 'X':
                         results[x] = 'O'
                         alphabet[guess[x]]-=1
-                        
+
             alphabet = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0, 'K':0, 'L':0, 'M':0, 'N':0, 'O':0, 'P':0, 'Q':0, 'R':0, 'S':0, 'T':0, 'U':0, 'V':0, 'W':0, 'X':0, 'Y':0, 'Z':0}
             for x in range(len(word)): 
                 alphabet[word[x]]+=1
