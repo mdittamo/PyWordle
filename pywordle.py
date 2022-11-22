@@ -6,23 +6,23 @@ init()
 #Obtain word from user(1)
 def getword():
     word = ''
-    while len(word) != 5:
+    while len(word) != 5 or any(chr.isdigit() for chr in word):
         
         word = getpass.getpass(prompt = 'Enter a (5) Letter word: ' )
         word = word.upper()
-        if len(word) < 5 or len(word) > 5: 
-            print(Fore.RED + '\nNot the correct number of characters!\n' + Style.RESET_ALL)
+        if len(word) < 5 or len(word) > 5 or any(chr.isdigit() for chr in word): 
+            print(Fore.RED + '\nNot the correct number of characters or you included numbers!\n' + Style.RESET_ALL)
             
     return list(word)
     
 #Get guess from user(2)
 def getguess():
     guess = ''
-    while len(guess) != 5:
+    while len(guess) != 5 or any (chr.isdigit() for chr in guess):
         guess = input('\nWhat is your five letter guess _ _ _ _ _? ')
         guess = guess.upper()
-        if len(guess) < 5 or len(guess) > 5: 
-            print(Fore.RED + '\nNot the correct number of characters!' + Style.RESET_ALL)
+        if len(guess) < 5 or len(guess) > 5 or any(chr.isdigit() for chr in guess): 
+            print(Fore.RED + '\nNot the correct number of characters or you included numbers!' + Style.RESET_ALL)
     return list(guess)
     
     
