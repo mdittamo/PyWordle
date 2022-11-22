@@ -92,18 +92,14 @@ while gameon == True:
             
         else: 
             player1.score-=1
-            
-            #BUG - something like kales will only produe _ _ O O X for fells when it should be _ _ X O X.  
-            
+                  
             #Check for X's - Correct letter correct place
-            
-            #Check for O's - Correct letter wrong place
-            
             for x in range (len(guess)): 
                 if guess[x] == l_word[x]:
                     results[x] = 'X'
                     alphabet[guess[x]]-=1
             
+            #Check for O's - Correct letter wrong place
             for x in range (len(guess)): 
                 for y in range(len(l_word)):
                     if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O' and results[x] != 'X':
