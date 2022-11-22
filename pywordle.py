@@ -1,4 +1,5 @@
 import getpass
+import random
 from colorama import Fore, Back, Style
 from colorama import init
 init()
@@ -43,7 +44,14 @@ while gameon == True:
     #Title Screen
     print(Fore.GREEN + '\nWelcome to PyWordle!\n' + Style.RESET_ALL)
     print(f'Guess the word in {player1.score} tries.\n')
-    word = getword()
+    
+    #Player supplied word
+    #word = getword()
+    
+    #Word from Word list
+    word = random.choice(open('words.txt').readlines())
+    word = word.upper()
+    word = list(word)
 
     #Gameplay
     while correct_guess == False: 
@@ -61,7 +69,7 @@ while gameon == True:
         
         elif player1.score <=1: 
             go_word = ''.join(word)
-            print(Fore.RED + f'\nYou lose!\nThe word was {go_word}!\nYou lose!\n' + Style.RESET_ALL)
+            print(Fore.RED + f'\nYou lose!\nThe word was {go_word}You lose!\n' + Style.RESET_ALL)
             choice = input('Would you like to play again (Y)? ')
             choice = choice.upper()
             if choice == 'Y':
@@ -88,3 +96,5 @@ while gameon == True:
             print('\n' + str(results))
             print(f'\nYou have {player1.score} guesses left.')
             results = ['_', '_','_','_','_']
+
+#Game Bug - fails when there is a single letter in the right spot and in the wrong spot (i.e. title would show O_XX__ for the word ditch)
