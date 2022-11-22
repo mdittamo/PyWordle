@@ -45,7 +45,7 @@ while gameon == True:
 
     #Title Screen
     print(Fore.GREEN + '\nWelcome to PyWordle!\n' + Style.RESET_ALL)
-    print(f'Guess the word in {player1.score} tries.\n')
+    print(f'Guess the word in {player1.score} tries.')
     
     #Player supplied word
     #word = getword()
@@ -57,11 +57,9 @@ while gameon == True:
     #Update alpha dictionary
     for x in range(len(word)): 
         alphabet[word[x]]+=1
-    print(word)
+    #print(word)
     l_word = list(word)
-    
-
-    print(alphabet)
+    #print(alphabet)
 
     #Gameplay
     while correct_guess == False: 
