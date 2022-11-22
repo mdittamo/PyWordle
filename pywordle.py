@@ -65,6 +65,7 @@ while correct_guess == False:
                 if guess[x] == word[y]:
                     results[x] = 'O'
         
+        #Check for X's - Correct letter correct place
         for x in range (len(guess)): 
             if guess[x] == word[x]:
                 results[x] = 'X'
