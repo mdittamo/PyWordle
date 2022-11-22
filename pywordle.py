@@ -52,7 +52,8 @@ while gameon == True:
     #word = getword()
     
     #Word from Word list
-    word = random.choice(open('words.txt').readlines())
+    #word = random.choice(open('words.txt').readlines())
+    word = 'fells'
     word = word.upper()
     word = word[0:5]
     #Update alpha dictionary - reset game
@@ -91,6 +92,8 @@ while gameon == True:
             
         else: 
             player1.score-=1
+            
+            #BUG - something like kales will only produe _ _ O O X for fells when it should be _ _ X X X.  The second O should be an X, but the O is overwriting because I only used one l in the first for statement.  Need to check against remaining letters, not 0. 
             
             #Check for X's - Correct letter correct place
             for x in range (len(guess)): 
