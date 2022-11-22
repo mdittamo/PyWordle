@@ -52,8 +52,7 @@ while gameon == True:
     #word = getword()
     
     #Word from Word list
-    #word = random.choice(open('words.txt').readlines())
-    word = 'fells'
+    word = random.choice(open('words.txt').readlines())
     word = word.upper()
     word = word[0:5]
     #Update alpha dictionary - reset game
