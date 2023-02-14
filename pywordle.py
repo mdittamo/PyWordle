@@ -95,13 +95,13 @@ while gameon == True:
             #Check for X's - Correct letter correct place
             for x in range (len(guess)): 
                 if guess[x] == l_word[x]:
-                    results[x] = 'X'
+                    results[x] = guess[x]
                     alphabet[guess[x]]-=1
             
             #Check for O's - Correct letter wrong place
             for x in range (len(guess)): 
                 for y in range(len(l_word)):
-                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O' and results[x] != 'X':
+                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O' and results[x] != guess[x]:
                         results[x] = 'O'
                         alphabet[guess[x]]-=1
 
