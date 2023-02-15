@@ -13,7 +13,9 @@ def getword():
     word = ''
     while len(word) != 5 or all(chr.isalpha() for chr in word) == False:
         
+        
         word = getpass.getpass(prompt = 'Enter a (5) Letter word: ' )
+        
         word = word.upper()
         if len(word) < 5 or len(word) > 5 or all(chr.isalpha() for chr in word) == False: 
             print(Fore.RED + '\nNot the correct number or invalid characters!\n' + Style.RESET_ALL)
@@ -49,7 +51,8 @@ while gameon == True:
     results = ['_', '_','_','_','_']
 
     #Title Screen
-    print(f'\nGuess the word in {player1.score} tries.')
+    print(f'\nGuess the word in {player1.score} tries.\n')
+    print('Any spot with a # is the correct letter, but in a wrong spot.\n')
     
     #Player supplied word
     #word = getword()
@@ -105,8 +108,8 @@ while gameon == True:
             #Check for O's - Correct letter wrong place
             for x in range (len(guess)): 
                 for y in range(len(l_word)):
-                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != 'O' and results[x] != guess[x]:
-                        results[x] = 'O'
+                    if guess[x] == l_word[y] and alphabet[guess[x]] > 0 and results[x] != '#' and results[x] != guess[x]:
+                        results[x] = '#'
                         alphabet[guess[x]]-=1
 
             alphabet = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0, 'K':0, 'L':0, 'M':0, 'N':0, 'O':0, 'P':0, 'Q':0, 'R':0, 'S':0, 'T':0, 'U':0, 'V':0, 'W':0, 'X':0, 'Y':0, 'Z':0}
