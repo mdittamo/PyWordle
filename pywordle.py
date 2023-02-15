@@ -3,7 +3,10 @@ import pyfiglet
 import random
 from colorama import Fore, Back, Style
 from colorama import init
+import os
 init()
+
+os.system('cls')
 
 #Obtain word from user(1)
 def getword():
@@ -83,6 +86,7 @@ while gameon == True:
             choice = input('Would you like to play again (Y)? ')
             choice = choice.upper()
             if choice == 'Y':
+                os.system('cls')
                 break
             else: 
                 gameon = False
