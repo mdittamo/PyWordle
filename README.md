@@ -1,6 +1,6 @@
 # PyWorldle
 
-Short Python Wordle script...works as far as I can tell.  
+Short Python Wordle script that runs within the console. 
 
 It has options to get the word from another player but those functions aren't currently being called.  
 
